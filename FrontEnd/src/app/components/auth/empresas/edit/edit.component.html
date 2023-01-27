@@ -1,10 +1,11 @@
-<block-ui>
+<!-- <block-ui>
     <div class="wrapper">
         <app-navbar></app-navbar>
         <div id="content" style="padding-top: 7rem;">
             <div class="row" style="text-align: center; margin-block-end: 1rem;">
                 <div class="col-md-4"></div>
-                <h4 class="h4 col-md-4" style="padding-block-end: 10px; border-block-end: solid 2px red;">Datos Empresariales</h4>
+                <h4 class="h4 col-md-4" style="padding-block-end: 10px; border-block-end: solid 2px red;">Datos
+                    Empresariales</h4>
             </div>
             <form class="needs-validation" novalidate [formGroup]="convenios" *ngIf="institucion"
                 (ngSubmit)="update(representante.value, empresa.value, direccion.value, celular.value )">
@@ -12,8 +13,8 @@
                     <div class="col-lg-3 col-md-1 col-sm-1"></div>
                     <div class="col-lg-6 col-md-10 col-12 col-sm-10 mb-3">
                         <label for="nombres">Representante:</label>
-                        <input type="text" class="form-control" placeholder="{{ institucion.representante }}" minlength="5" formControlName="representante"
-                            required #representante>
+                        <input type="text" class="form-control" placeholder="{{ institucion.representante }}"
+                            minlength="5" formControlName="representante" required #representante>
                         <div class="valid-tooltip">
                             Genial!
                         </div>
@@ -27,8 +28,8 @@
                     <div class="col-lg-3 col-md-1 col-sm-1"></div>
                     <div class="col-lg-6 col-md-10 col-12 col-sm-10 mb-3">
                         <label for="nombres">Empresa:</label>
-                        <input type="text" class="form-control" placeholder="{{ institucion.nombre }}" minlength="3" formControlName="empresa"
-                            required #empresa>
+                        <input type="text" class="form-control" placeholder="{{ institucion.nombre }}" minlength="3"
+                            formControlName="empresa" required #empresa>
                         <div class="valid-tooltip">
                             Genial!
                         </div>
@@ -43,8 +44,8 @@
                     <div class="col-lg-3 col-md-1 col-sm-1"></div>
                     <div class="col-lg-6 col-md-10 col-12 col-sm-10 mb-3">
                         <label for="nombres"> Dirección:</label>
-                        <input type="text" class="form-control" placeholder="{{ institucion.direccion}}" minlength="3" formControlName="direccion"
-                            required #direccion>
+                        <input type="text" class="form-control" placeholder="{{ institucion.direccion}}" minlength="3"
+                            formControlName="direccion" required #direccion>
                         <div class="valid-tooltip">
                             Genial!
                         </div>
@@ -59,8 +60,8 @@
                     <div class="col-lg-3 col-md-1 col-sm-1"></div>
                     <div class="col-lg-6 col-md-10 col-12 col-sm-10 mb-3">
                         <label for="celular">Celular:</label>
-                        <input type="number" class="form-control" placeholder="{{institucion.celular}}" formControlName="celular"
-                            required #celular>
+                        <input type="number" class="form-control" placeholder="{{institucion.celular}}"
+                            formControlName="celular" required #celular>
                         <div class="valid-tooltip">
                             Genial!
                         </div>
@@ -79,4 +80,108 @@
             </form>
         </div>
     </div>
+</block-ui> -->
+
+<block-ui>
+    <div class="wrapper">
+        <app-navbar></app-navbar>
+        <div class="container-fluid m-2 content-page">
+            <div class="col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-12">
+                                <h5 style="padding-block-end: 10px; border-block-end: solid 2px rgb(0, 106, 255);"
+                                    class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Datos
+                                    Empresariales
+                                </h5>
+
+                                <form class="needs-validation" novalidate [formGroup]="convenios" *ngIf="institucion"
+                                    (ngSubmit)="update(representante.value, empresa.value, direccion.value, celular.value )">
+                                    <div class="form-row">
+                                        <div class="col-lg-3 col-md-1 col-sm-1"></div>
+                                        <div class="col-lg-6 col-md-10 col-12 col-sm-10 mb-3">
+                                            <label for="nombres">Representante:</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="{{ institucion.representante }}" minlength="5"
+                                                formControlName="representante" required #representante>
+                                            <div class="valid-tooltip">
+                                                Genial!
+                                            </div>
+                                            <div class="invalid-tooltip">
+                                                Ingrese el Representante
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-1 col-sm-1"></div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-lg-3 col-md-1 col-sm-1"></div>
+                                        <div class="col-lg-6 col-md-10 col-12 col-sm-10 mb-3">
+                                            <label for="nombres">Empresa:</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="{{ institucion.nombre }}" minlength="3"
+                                                formControlName="empresa" required #empresa>
+                                            <div class="valid-tooltip">
+                                                Genial!
+                                            </div>
+                                            <div class="invalid-tooltip">
+                                                Ingrese el nombre de la empresa
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-1 col-sm-1"></div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="col-lg-3 col-md-1 col-sm-1"></div>
+                                        <div class="col-lg-6 col-md-10 col-12 col-sm-10 mb-3">
+                                            <label for="nombres"> Dirección:</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="{{ institucion.direccion}}" minlength="3"
+                                                formControlName="direccion" required #direccion>
+                                            <div class="valid-tooltip">
+                                                Genial!
+                                            </div>
+                                            <div class="invalid-tooltip">
+                                                Ingrese la Dirección
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-1 col-sm-1"></div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="col-lg-3 col-md-1 col-sm-1"></div>
+                                        <div class="col-lg-6 col-md-10 col-12 col-sm-10 mb-3">
+                                            <label for="celular">Celular:</label>
+                                            <input type="number" class="form-control"
+                                                placeholder="{{institucion.celular}}" formControlName="celular" required
+                                                #celular>
+                                            <div class="valid-tooltip">
+                                                Genial!
+                                            </div>
+                                            <div class="invalid-tooltip">
+                                                Ingrese el celular
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-1 col-sm-1"></div>
+                                    </div>
+                                    <div class="row" style="margin-top: 2rem;">
+                                        <div class="col-lg-5 col-sm-5 col-4"></div>
+                                        <button class="btn btn-outline-primary col-lg-2 col-sm-2 col-4"
+                                            [disabled]="!convenios.valid" type="submit">Enviar</button>
+                                        <div class="col-lg-5 col-sm-5 col-4"></div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-12">
+                                <div class="text-end">
+                                    <div id="campaign-sent-chart" data-colors="#727cf5"></div>
+                                </div>
+                            </div>
+                        </div> <!-- end row-->
+                    </div> <!-- end card-body -->
+                </div> <!-- end card -->
+            </div> <!-- end col -->
+        </div>
+    </div>
+
 </block-ui>

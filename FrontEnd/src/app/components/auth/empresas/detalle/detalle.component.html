@@ -1,4 +1,4 @@
-<div class="wrapper">
+<!-- <div class="wrapper">
     <app-navbar></app-navbar>
     <div id="content" class="col-12" style="padding-top: 7rem;">
         <div class="row">
@@ -30,7 +30,7 @@
                         <td>{{ empresa.celular }}</td>
                         <td>
                             <button class="btn btn-outline-info" data-toggle="modal" data-target="#vinculo"
-                            (click)="selectVinculados(empresa._id)" (click)="selectEmpresa(empresa._id)">
+                                (click)="selectVinculados(empresa._id)" (click)="selectEmpresa(empresa._id)">
                                 <i class="fa fa-users"></i>
                             </button>
                             <button class="btn btn-outline-danger ml-1" (click)="deleteEmpresa(empresa._id)">
@@ -48,5 +48,76 @@
             <pagination-controls (pageChange)="num = $event"></pagination-controls>
         </div>
     </div>
+</div> -->
+
+<div class="wrapper">
+    <app-navbar></app-navbar>
+    <div class="container-fluid m-2 content-page">
+        <div class="col-lg-12 col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-12">
+                            <h5 style="padding-block-end: 10px; border-block-end: solid 2px rgb(0, 106, 255);"
+                                class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">
+                                Detalles de las Instituciones
+                            </h5>
+
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="thead-dark">
+                                        <tr class="text-center">
+                                            <th scope="col">#</th>
+                                            <th scope="col">Nombre Empresa</th>
+                                            <th scope="col">Representante</th>
+                                            <th scope="col">Dirección</th>
+                                            <th scope="col">Celular</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="text-center border border-dark"
+                                            *ngFor='let empresa of empresas | paginate: { itemsPerPage: 5, currentPage: num}; let id = index;'>
+                                            <th scope="row">{{ id+1 }}</th>
+                                            <td>{{ empresa.nombre }}</td>
+                                            <td>{{ empresa.representante }}</td>
+                                            <td>{{ empresa.direccion }}</td>
+                                            <td>{{ empresa.celular }}</td>
+                                            <td>
+                                                <button class="btn btn-outline-info" data-toggle="modal"
+                                                    data-target="#vinculo" (click)="selectVinculados(empresa._id)"
+                                                    (click)="selectEmpresa(empresa._id)">
+                                                    <i class="fa fa-users"></i>
+                                                </button>
+                                                <button class="btn btn-outline-danger ml-1"
+                                                    (click)="deleteEmpresa(empresa._id)">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </button>
+                                                <button class="btn btn-outline-warning ml-1"
+                                                    (click)="editEmpresa(empresa._id)">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-11 text-center mt-3">
+                                <pagination-controls (pageChange)="num = $event"></pagination-controls>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="text-end">
+                                <div id="campaign-sent-chart" data-colors="#727cf5"></div>
+                            </div>
+                        </div>
+                    </div> <!-- end row-->
+                </div> <!-- end card-body -->
+            </div> <!-- end card -->
+        </div> <!-- end col -->
+    </div>
 </div>
+
+
+
 <app-vinculo [vinculados]="estudiantes" [idInstitucion]="idEmpresa" [institucion]="empresa"></app-vinculo>
