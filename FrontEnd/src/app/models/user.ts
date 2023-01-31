@@ -5,4 +5,5 @@ export interface User {
     cedula?: string;
     email: string;
     password: string;
+    role?:string;
 }

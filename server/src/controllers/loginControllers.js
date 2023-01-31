@@ -21,13 +21,14 @@ exports.createUser = (req, res, next) => {
         expiresIn: expiresIn
       });
     const dataUser = {
-      nombre: user.name,
+      nombre: user.nombre,
       apellido: user.apellido,
       cedula: user.cedula,
       email: user.email,
       isInstitucion: user.idInstitucion,
+      role: user.role,
       accessToken: accessToken,
-      expiresIn: expiresIn
+      expiresIn: expiresIn,
     }
     // response 
     res.send({ dataUser });
@@ -58,6 +59,7 @@ exports.loginUser = (req, res, next) => {
           cedula: user.cedula,
           email: user.email,
           idInstitucion: user.idInstitucion,
+          role: user.role,
           accessToken: accessToken,
           expiresIn: expiresIn
         }

@@ -43,7 +43,7 @@
                     </ul>
                 </div>
             </li>
-            <div *ngIf="user.cedula != '0' && user.nombre != 'Admin'">
+            <div *ngIf="user.role == 'STUDENT_ROLE'">
                 <li class="side-nav-title side-nav-item">Estudiantes
                 </li>
 
@@ -60,13 +60,13 @@
                     <div class="collapse" id="sidebarEcommerce">
                         <ul class="side-nav-second-level">
                             <li>
-                                <a *ngIf="user.cedula != '0' && user.nombre != 'Admin' " class="text-light"
+                                <a *ngIf="user.role == 'STUDENT_ROLE'" class="text-light"
                                     routerLink="/auth/ingresarInformeE">
                                     Informes
                                 </a>
                             </li>
                             <li>
-                                <a *ngIf="user.cedula != '0' && user.nombre != 'Admin'" class="dropdown-item"
+                                <a *ngIf="user.role == 'STUDENT_ROLE'"class="dropdown-item"
                                     routerLink="/auth/informesAcademicos">Progreso</a>
                             </li>
 
@@ -75,7 +75,7 @@
                 </li>
             </div>
 
-            <div *ngIf="user.cedula == '0' && user.nombre == 'Admin' ">
+            <div *ngIf="user.role == 'ADMIN_ROLE'">
                 <li class="side-nav-title side-nav-item">Empresas</li>
 
                 <li class="side-nav-item">
@@ -88,15 +88,15 @@
                     <div class="collapse" id="sidebarPages">
                         <ul class="side-nav-second-level">
                             <li>
-                                <a *ngIf="user.cedula == '0' && user.nombre == 'Admin'" class="dropdown-item"
+                                <a *ngIf="user.role == 'ADMIN_ROLE'" class="dropdown-item"
                                     routerLink="/auth/convenios">Convenio</a>
                             </li>
                             <li>
-                                <a *ngIf="user.cedula == '0' && user.nombre == 'Admin'" class="dropdown-item"
+                                <a *ngIf="user.role == 'ADMIN_ROLE'" class="dropdown-item"
                                     routerLink="/auth/detalle">Detalle</a>
                             </li>
                             <li>
-                                <a *ngIf="user.cedula == '0' && user.nombre == 'Admin'" class="dropdown-item"
+                                <a *ngIf="user.role == 'ADMIN_ROLE'" class="dropdown-item"
                                     routerLink="/auth/informe">Informe</a>
                             </li>
                         </ul>

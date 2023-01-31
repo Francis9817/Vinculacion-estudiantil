@@ -16,7 +16,8 @@ export class NavbarComponent implements OnInit {
   user = {
     nombre: '',
     apellido: '',
-    cedula: ''
+    cedula: '',
+    role: '',
   };
 
   @BlockUI() blockUI: NgBlockUI;
