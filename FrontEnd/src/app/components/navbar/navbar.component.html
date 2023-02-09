@@ -4,20 +4,24 @@
     <!-- LOGO -->
     <a href="index.html" class="logo text-center logo-light">
         <span class="logo-lg">
-            <img src="assets/images/logo.png" alt="" height="16">
+            <!-- <img src="assets/images/logo_sm_dark.png" alt="" height="16"> -->
+            <p>VINCULACIÓN</p>
         </span>
         <span class="logo-sm">
-            <img src="assets/images/logo_sm.png" alt="" height="16">
+            <p>V</p>
+            <!-- <img src="assets/images/logotipo.png" alt="" height="16"> -->
         </span>
     </a>
 
     <!-- LOGO -->
     <a href="index.html" class="logo text-center logo-dark">
         <span class="logo-lg">
-            <img src="assets/images/logo-dark.png" alt="" height="16">
+            <p>VINCULACIÓN</p>
+            <!-- <img src="assets/images/logo.png" alt="" height="16"> -->
         </span>
         <span class="logo-sm">
-            <img src="assets/images/logo_sm_dark.png" alt="" height="16">
+            <p>V</p>
+            <!-- <img src="assets/images/logotipo.png" alt="" height="16"> -->
         </span>
     </a>
 
@@ -66,7 +70,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a *ngIf="user.role == 'STUDENT_ROLE'"class="dropdown-item"
+                                <a *ngIf="user.role == 'STUDENT_ROLE'" class="dropdown-item"
                                     routerLink="/auth/informesAcademicos">Progreso</a>
                             </li>
 
@@ -151,7 +155,7 @@
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item" (click)="onLogout()">
                             <i class="mdi mdi-logout me-1"></i>
-                            <span >Logout</span>
+                            <span>Logout</span>
                         </a>
                     </div>
                 </li>
