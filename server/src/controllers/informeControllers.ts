@@ -5,29 +5,32 @@ import path from 'path'
 import fs from 'fs-extra'
 import Instituciones from '../models/Instituciones';
 
-export async function getInformes(req: Request, res: Response): Promise<Response>{
+export async function getInformes(req: Request, res: Response): Promise<Response> {
     const informe = await Informe.find();
     return res.json(informe)
 }
 
-export async function getInforme(req: Request, res: Response): Promise<Response>{
+export async function getInforme(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
     const vinculacion = await Informe.findById(id);
     return res.json(vinculacion)
 }
 
 export async function crearInforme(req: Request, res: Response): Promise<Response> {
-    const { nombreProyecto, idConvenio, idTutorAcademico, fecha, idEstudiante, estadoAprobacion, horas } = req.body;
-    const newInforme = { 
-        nombreProyecto,  
-        fecha, 
+    const {
+        nombreProyecto, idConvenio, idTutorAcademico, fecha, idEstudiante, estadoAprobacion, horas, tipo_informe
+    } = req.body;
+    const newInforme = {
+        nombreProyecto,
+        fecha,
+        tipo_informe,
         estadoAprobacion,
         horas,
         total: 0,
         archivoPath: req.file.path,
         idConvenio,
-        idTutorAcademico, 
-        idEstudiante 
+        idTutorAcademico,
+        idEstudiante
     };
     const archivo = new Informe(newInforme);
     await archivo.save();
@@ -38,22 +41,25 @@ export async function crearInforme(req: Request, res: Response): Promise<Respons
     });
 };
 
-export async function updateInforme(req: Request, res: Response): Promise<Response>{
-    const { nombreProyecto, idConvenio, idTutorAcademico, fecha, idEstudiante, estadoAprobacion, horas } = req.body;
+export async function updateInforme(req: Request, res: Response): Promise<Response> {
+    const {
+        nombreProyecto, idConvenio, idTutorAcademico, fecha, idEstudiante, estadoAprobacion, horas, tipo_informe
+    } = req.body;
     const informe = await Informe.findById(req.params.id);
-    if(informe){
+    if (informe) {
         await fs.unlink(path.resolve(informe.archivoPath))
     }
-    await Informe.findByIdAndUpdate(req.params.id, { 
-        nombreProyecto, 
+    await Informe.findByIdAndUpdate(req.params.id, {
+        nombreProyecto,
         idConvenio,
-        idTutorAcademico, 
-        fecha, 
+        tipo_informe,
+        idTutorAcademico,
+        fecha,
         idEstudiante,
         estadoAprobacion,
         horas,
-        archivoPath: req.file.path 
-    }, {new:true});
+        archivoPath: req.file.path
+    }, { new: true });
     const vinculacion = await Informe.find();
     return res.json({
         message: 'File Updated',
@@ -61,11 +67,11 @@ export async function updateInforme(req: Request, res: Response): Promise<Respon
     })
 }
 
-export async function updateEstado(req: Request, res: Response): Promise<Response>{
+export async function updateEstado(req: Request, res: Response): Promise<Response> {
     const { estadoAprobacion } = req.body;
-    await Informe.findByIdAndUpdate(req.params.id, { 
+    await Informe.findByIdAndUpdate(req.params.id, {
         estadoAprobacion
-    }, {new:true});
+    }, { new: true });
     const vinculacion = await Informe.find();
     return res.json({
         message: 'Estado Updated',
@@ -73,9 +79,9 @@ export async function updateEstado(req: Request, res: Response): Promise<Respons
     })
 }
 
-export async function deleteInforme(req: Request, res: Response): Promise<Response>{
+export async function deleteInforme(req: Request, res: Response): Promise<Response> {
     const informe = await Informe.findByIdAndRemove(req.params.id);
-    if(informe){
+    if (informe) {
         await fs.unlink(path.resolve(informe.archivoPath))
     }
     const vinculacion = await Informe.find();
@@ -85,24 +91,24 @@ export async function deleteInforme(req: Request, res: Response): Promise<Respon
     })
 }
 
-export async function getInformeEstudiante(req: Request, res: Response): Promise<Response>{
+export async function getInformeEstudiante(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
     const informes = await Informe.find().where('idEstudiante', id);
     return res.json(informes)
 }
 
-export async function getContarAprobados(req: Request, res: Response): Promise<Response>{
+export async function getContarAprobados(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
     const informes = await Informe.aggregate(
         [
             {
-              $group:
+                $group:
                 {
-                  _id: "$idEstudiante",
-                  total: { $sum: { $multiply: [ "$horas" ] } },
+                    _id: "$idEstudiante",
+                    total: { $sum: { $multiply: ["$horas"] } },
                 }
             }
-          ]
+        ]
     )
     return res.json(informes)
 }

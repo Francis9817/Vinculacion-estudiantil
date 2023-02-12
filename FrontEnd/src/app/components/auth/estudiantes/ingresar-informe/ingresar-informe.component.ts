@@ -26,6 +26,7 @@ export class IngresarInformeComponent implements OnInit {
     { id: '2', nombre: 'Pepito', apellido: 'AAAa' },
     { id: '3', nombre: 'Maria', apellido: 'Bbbb' }
   ];
+  hora1 = 18;
   convenio: Institucion = {
     _id: '',
     celular: '',
@@ -54,6 +55,7 @@ export class IngresarInformeComponent implements OnInit {
     this.informeAcademico = this.informe.group({
       nombreProyecto: new FormControl('', [Validators.required, Validators.minLength(3)]),
       tutorAcademico: new FormControl('', [Validators.required]),
+      tipo_informe:new FormControl('', [Validators.required]),
       archivoPath: new FormControl('', [Validators.required]),
       horas: new FormControl('', [Validators.required]),
     });
@@ -127,16 +129,19 @@ export class IngresarInformeComponent implements OnInit {
     return idTutor;
   }
 
+
   enviar(nombreProyecto: HTMLInputElement, tutorAcademico: HTMLSelectElement,
-         horas: HTMLInputElement) {
+         horas: HTMLInputElement, tipo_informe:HTMLInputElement) {
     this.blockUI.start('Enviado Informe');
     setTimeout(() => {
       this.blockUI.stop();
     }, 1000);
     const estadoAprobacion = 0;
     const tutor = this.seleccionarTutor(tutorAcademico);
+   
+
     this.informeService
-      .crearInforme(nombreProyecto.value, this.convenio._id, tutor, this.hoy, estadoAprobacion, horas.value, this.file, this.estudiante.id)
+      .crearInforme(nombreProyecto.value, this.convenio._id, tutor, this.hoy, estadoAprobacion, horas.value, this.file, this.estudiante.id, tipo_informe.value)
       .subscribe(
         res => {
           alertify.set('notifier', 'position', 'top-right');

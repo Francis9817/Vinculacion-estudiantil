@@ -61,6 +61,8 @@ export class InformeDetalleComponent implements OnInit {
       this.informeAcademico = this.informe.group({
         nombreProyecto: new FormControl('', [Validators.required, Validators.minLength(3)]),
         tutorAcademico: new FormControl('', [Validators.required]),
+        tipo_informe:new FormControl('', [Validators.required]),
+
         archivoPath: new FormControl('', [Validators.required]),
         horas: new FormControl('', [Validators.required]),
       });
@@ -154,14 +156,14 @@ export class InformeDetalleComponent implements OnInit {
   }
 
   update( nombreProyecto: HTMLInputElement,
-          tutorAcademico: HTMLSelectElement, horas: HTMLInputElement) {
+          tutorAcademico: HTMLSelectElement, horas: HTMLInputElement, tipo_informe:HTMLInputElement) {
     this.blockUI.start('Actualizando Informe');
     const estadoAprobacion = 0;
     const tutor = this.seleccionarTutor(tutorAcademico);
     setTimeout(()  => {
       this.informeService
       .updateInforme( this.id, nombreProyecto.value, this.convenio._id, tutor, this.hoy,
-                      estadoAprobacion, horas.value, this.file, this.estudiante.id)
+                      estadoAprobacion, horas.value, this.file, this.estudiante.id, tipo_informe.value)
       .subscribe(
         res => {
           alertify.set('notifier', 'position', 'top-right');

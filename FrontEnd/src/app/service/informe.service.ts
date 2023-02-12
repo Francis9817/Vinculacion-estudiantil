@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Informe } from '../models/informe';
 import { Institucion } from '../models/instituciones';
 
@@ -10,10 +10,17 @@ export class InformeService {
   urlApi = 'http://localhost:4000/api';
   urlApiOne = 'http://localhost:4000/api/getInforme';
 
-  constructor( private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  crearInforme( nombreProyecto: string, convenio: string, tutorAcademico: string, fecha: string,
-                estadoAprobacion: number, horas: string, file: File, idEstudiante: string) {
+  crearInforme(
+    nombreProyecto: string,
+    convenio: string,
+    tutorAcademico: string,
+    fecha: string,
+    estadoAprobacion: number,
+    horas: string, file: File,
+    idEstudiante: string,
+    tipo_informe: string) {
     const fd = new FormData();
     fd.append('nombreProyecto', nombreProyecto);
     fd.append('idConvenio', convenio);
@@ -23,6 +30,7 @@ export class InformeService {
     fd.append('horas', horas);
     fd.append('file', file);
     fd.append('idEstudiante', idEstudiante);
+    fd.append('tipo_informe', tipo_informe);
     return this.http.post(`${this.urlApi}/obtenerDatos`, fd);
   }
   // Estudiantes
@@ -46,13 +54,14 @@ export class InformeService {
     return this.http.delete(`${this.urlApiOne}/${id}`);
   }
 
-  updateInforme(  id: string, nombreProyecto: string, convenio: string, tutorAcademico: string, fecha: string,
-                  estadoAprobacion: number, horas: string, file: File, idEstudiante: string) {
+  updateInforme(id: string, nombreProyecto: string, convenio: string, tutorAcademico: string, fecha: string,
+    estadoAprobacion: number, horas: string, file: File, idEstudiante: string, tipo_informe: string) {
     const fd = new FormData();
     fd.append('nombreProyecto', nombreProyecto);
     fd.append('idConvenio', convenio);
     fd.append('idTutorAcademico', tutorAcademico);
     fd.append('fecha', fecha);
+    fd.append('tipo_informe', tipo_informe);
     fd.append('estadoAprobacion', estadoAprobacion.toString());
     fd.append('horas', horas);
     fd.append('file', file);
