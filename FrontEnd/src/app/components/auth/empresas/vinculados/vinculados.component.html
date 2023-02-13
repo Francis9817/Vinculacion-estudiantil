@@ -99,7 +99,7 @@
                                             </td>
                                             <div *ngFor="let horas of total">
                                                 <td *ngIf="vinculo._id == horas._id">
-                                                    {{horas.total}} / 100
+                                                    {{horas.total}}% / 100%
                                                     <button *ngIf="horas.total >= 160" class="btn btn-outline-warning">
                                                         <i class="fa fa-check"></i> Completado
                                                     </button>
