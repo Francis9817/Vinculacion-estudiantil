@@ -96,7 +96,7 @@ export class InformeAcademicoComponent implements OnInit {
           data: [100, total],
           backgroundColor: ['#FFD700', '#7CFC00'],
         }],
-        labels: ['Informes entregados', 'Progreso']
+        labels: ['Informes por entregar', 'Progreso']
       },
       options: { responsive: true }
     });
