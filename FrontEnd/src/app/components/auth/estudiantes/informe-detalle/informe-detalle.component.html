@@ -103,9 +103,15 @@
                                                 <select class="custom-select" formControlName="tipo_informe" #tipo_informe
                                                 required>
                                                 <option [(ngModel)]="recuperarInforme.tipo_informe" selected="">{{recuperarInforme.tipo_informe}}</option>
-                                                <option value="Afganistán">Afganistán</option>
-                                                <option value="Albania">Albania</option>
-                                                <option value="Alemania">Alemania</option>
+                                                <option value="CARTA COMPROMISO VINCULACIÓN">CARTA COMPROMISO VINCULACIÓN</option>
+                                                <option value="INFORME DE INICIO DE PROYECTOS POR PARTE DEL TUTOR DEL PROYECTO"> INFORME DE INICIO DE PROYECTOS POR PARTE DEL TUTOR DEL PROYECTO</option>
+                                                <option value="CONTROL DE ASISTENCIA Y SEGUIMIENTO">CONTROL DE ASISTENCIA Y SEGUIMIENTO</option>
+                                                <option value="REGISTRO DE ASISTENCIA TUTOR ACADÉMICO (HOJA DE RUTA)">REGISTRO DE ASISTENCIA TUTOR ACADÉMICO (HOJA DE RUTA)</option>
+                                                <option value="INFORME FINAL">INFORME FINAL</option>
+                                                <option value="CONTROL CUMPLIMIENTO DE OBJETIVOS VINCULACION ACTUALIZADO">CONTROL CUMPLIMIENTO DE OBJETIVOS VINCULACION ACTUALIZADO</option>
+                                                <option value="CERTIFICADO DE VINCULACIÓN">CERTIFICADO DE VINCULACIÓN</option>
+                                                <option value="ENCUESTA DE PERCEPCIÓN">ENCUESTA DE PERCEPCIÓN</option>
+                                                <option value="INFORME DE CONTROL DE VINCULACIÓN">INFORME DE CONTROL DE VINCULACIÓN</option>
                                             </select>
                                               
                                                 <div class="valid-tooltip">
@@ -121,14 +127,14 @@
     
                                         <div class="form-row">
                                             <div class="col-lg-3 col-md-1 col-sm-1"></div>
-                                            <div class="col-lg-3 col-md-5 col-12 col-sm-5 mb-3">
+                                            <div class="col-lg-6 col-md-10 col-12 col-sm-10 mb-3">
                                                 <label for="date">Fecha:</label>
                                                 <input type="text" class="form-control" [value]="hoy" disabled>
                                             </div>
                                             <div class="col-lg-3 col-md-5 col-12 col-sm-5 mb-3">
-                                                <label for="hora">Horas Realizadas:</label>
+                        
                                                 <input type="number" class="form-control" formControlName="horas"
-                                                    minlength="3" [(ngModel)]="recuperarInforme.horas" required disabled
+                                                    minlength="3" style="visibility:hidden" [(ngModel)]="recuperarInforme.horas" required disabled
                                                     #horas>
                                             </div>
                                             <div class="col-lg-3 col-md-1 col-sm-1"></div>
@@ -156,12 +162,12 @@
                                         </div>
                                         <div class="row" style="margin-top: 2rem;">
                                             <div class="col-lg-5 col-sm-5 col-4"></div>
-                                            <button *ngIf="total < 160"
+                                            <button *ngIf="total < 100"
                                                 class="btn btn-outline-primary col-lg-2 col-sm-2 col-4"
                                                 [disabled]="!informeAcademico.valid" type="submit">Enviar</button>
-                                            <button *ngIf="total >= 160"
+                                            <button *ngIf="total >= 100"
                                                 class="btn btn-outline-warning col-lg-2 col-sm-2 col-4" type="button"
-                                                (click)="mensaje()">Horas Completadas</button>
+                                                (click)="mensaje()">Informes Completos</button>
                                             <div class="col-lg-5 col-sm-5 col-4"></div>
                                         </div>
                                     </form>

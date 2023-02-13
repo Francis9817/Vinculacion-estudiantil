@@ -7,6 +7,7 @@ import { JwtResponseI } from 'src/app/models/jwt-response';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { Institucion } from 'src/app/models/instituciones';
 import { EmpresaService } from 'src/app/service/empresa.service';
+import { Router } from '@angular/router';
 declare let alertify: any;
 
 /*Event Html Input*/
@@ -26,7 +27,7 @@ export class IngresarInformeComponent implements OnInit {
     { id: '2', nombre: 'Pepito', apellido: 'AAAa' },
     { id: '3', nombre: 'Maria', apellido: 'Bbbb' }
   ];
-  hora1 = 18;
+  hora1 = 11.11;
   convenio: Institucion = {
     _id: '',
     celular: '',
@@ -51,7 +52,7 @@ export class IngresarInformeComponent implements OnInit {
   fileSelected: string | ArrayBuffer;
 
   constructor(private informe: FormBuilder, private informeService: InformeService,
-              private userService: AuthService, private empresaService: EmpresaService) {
+              private userService: AuthService, private empresaService: EmpresaService, private router:Router) {
     this.informeAcademico = this.informe.group({
       nombreProyecto: new FormControl('', [Validators.required, Validators.minLength(3)]),
       tutorAcademico: new FormControl('', [Validators.required]),
@@ -147,6 +148,7 @@ export class IngresarInformeComponent implements OnInit {
           alertify.set('notifier', 'position', 'top-right');
           alertify.success('Informe Enviado Correctamente');
           this.informeAcademico.reset();
+          this.router.navigate(['auth/informesAcademicos']);
           this.quitarValidar();
         },
         err => {

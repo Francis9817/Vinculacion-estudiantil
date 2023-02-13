@@ -30,7 +30,9 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-2"></div>
-                                            <canvas class="col-md-8 col-sm-12 col-12" id="myChart"></canvas>
+                                           
+                                            <canvas class="col-md-6 col-sm-12 col-12" id="myChart"></canvas>
+
                                             <div class="col-md-2"></div>
                                         </div>
                                     </div>
@@ -47,7 +49,7 @@
                                                 <th scope="col">#</th>
                                                 <th scope="col">Nombre Proyecto</th>
                                                 <th scope="col">Convenio</th>
-                                                <th scope="col">Horas</th>
+                                                <th scope="col">Tipo de informe</th>
                                                 <th scope="col">Fecha</th>
                                                 <th scope="col">Archivo</th>
                                             </tr>
@@ -61,7 +63,7 @@
                                                         {{ convenio.nombre }}
                                                     </td>
                                                 </div>
-                                                <td>{{ informeR.horas }}</td>
+                                                <td>{{ informeR.tipo_informe }}</td>
                                                 <td>{{ informeR.fecha }}</td>
                                                 <td>
                                                     <div class="row col-md-12">
@@ -95,7 +97,7 @@
                                                 <th scope="col">#</th>
                                                 <th scope="col">Nombre Proyecto</th>
                                                 <th scope="col">Convenio</th>
-                                                <th scope="col">Horas</th>
+                                                <th scope="col">Tipo de informe</th>
                                                 <th scope="col">Fecha</th>
                                                 <th scope="col">Archivo / Estado</th>
                                             </tr>
@@ -109,7 +111,7 @@
                                                         {{ convenio.nombre }}
                                                     </td>
                                                 </div>
-                                                <td>{{ informeA.horas }}</td>
+                                                <td>{{ informeA.tipo_informe }}</td>
                                                 <td>{{ informeA.fecha }}</td>
                                                 <td>
                                                     <div class="row col-md-12">

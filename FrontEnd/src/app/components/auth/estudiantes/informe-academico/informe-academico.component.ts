@@ -93,10 +93,10 @@ export class InformeAcademicoComponent implements OnInit {
       type: 'doughnut',
       data: {
         datasets: [{
-          data: [160, total],
+          data: [100, total],
           backgroundColor: ['#FFD700', '#7CFC00'],
         }],
-        labels: ['Total de Horas', 'Progreso']
+        labels: ['Informes entregados', 'Progreso']
       },
       options: { responsive: true }
     });
