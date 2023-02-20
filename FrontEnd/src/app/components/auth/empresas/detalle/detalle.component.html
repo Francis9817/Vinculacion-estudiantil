@@ -72,6 +72,8 @@
                                             <th scope="col">Representante</th>
                                             <th scope="col">Dirección</th>
                                             <th scope="col">Celular</th>
+                                            <th scope="col">Fecha de vinculacion</th>
+                                            <th scope="col">archivo</th>
                                             <th scope="col"></th>
                                         </tr>
                                     </thead>
@@ -83,6 +85,14 @@
                                             <td>{{ empresa.representante }}</td>
                                             <td>{{ empresa.direccion }}</td>
                                             <td>{{ empresa.celular }}</td>
+                                            <td>{{ empresa.fecha_inicio }}</td>
+                                            <td>
+                                                <div class="row col-md-12">
+                                                    <a [href]="'http://localhost:4000/' + empresa.archivoPath"
+                                                        target="_blank"
+                                                        class=" mb-2">Archivo</a>
+                                                </div>
+                                            </td>
                                             <td>
                                                 <button class="btn btn-outline-info" data-toggle="modal"
                                                     data-target="#vinculo" (click)="selectVinculados(empresa._id)"
