@@ -17,25 +17,51 @@ export class ConveniosComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
 
   convenios: FormGroup;
+  file: File;
+  fileSelected: string | ArrayBuffer;
 
   constructor(private empresa: FormBuilder, private empresaService: EmpresaService) {
     this.convenios = this.empresa.group({
       representante: new FormControl('', [Validators.required, Validators.minLength(5)]),
       empresa: new FormControl('', [Validators.required]),
       direccion: new FormControl('', [Validators.required]),
-      celular: new FormControl('', [Validators.required])
+      celular: new FormControl('', [Validators.required]),
+      fecha_inicio: new FormControl('', [Validators.required]),
+      fecha_fin: new FormControl('', [Validators.required]),
+      correo_institucion: new FormControl('', [Validators.required]),
+      archivoPath: new FormControl('', [Validators.required]),
+
     });
   }
 
   ngOnInit() {
   }
 
-  enviar(representante: string, nombre: string, direccion: string, celular: string) {
+  
+  archivoSubir(event) {
+    if (event.target.files && event.target.files[0]) {
+      // tslint:disable-next-line:no-angle-bracket-type-assertion
+      this.file = <File> event.target.files[0];
+    }
+  }
+
+  enviar(representante: HTMLInputElement,nombre: HTMLInputElement, 
+    direccion:HTMLInputElement, celular:HTMLInputElement, fecha_inicio:HTMLInputElement,
+    fecha_fin:HTMLInputElement, correo_institucion:HTMLInputElement) {
     this.blockUI.start('Enviado Empresa');
     setTimeout(() => {
       this.blockUI.stop();
     }, 1000);
-    this.empresaService.crearEmpresa({ representante, nombre, direccion, celular } as Institucion)
+/* 
+     representante: string,
+    nombre: string,
+    direccion: string,
+    celular: string,
+    fecha_inicio: string,
+    fecha_fin: string,
+    correo_institucion: string,
+    file: File */
+    this.empresaService.crearConvenio( representante.value, nombre.value,  direccion.value, celular.value, fecha_inicio.value, fecha_fin.value, correo_institucion.value, this.file)
       .subscribe( res => {
         alertify.success('Empresa Ingresada Correctamente');
         this.convenios.reset();
@@ -52,5 +78,6 @@ export class ConveniosComponent implements OnInit {
       form.classList.remove('was-validated');
     }, false);
   }
+
 
 }

@@ -4,4 +4,8 @@ export interface Institucion {
     nombre: string;
     direccion: string;
     celular: string;
+    fecha_inicio: string,
+    fecha_fin: string;
+    correo_institucion: string;
+    archivoPath: string;
 }

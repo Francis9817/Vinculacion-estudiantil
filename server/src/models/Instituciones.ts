@@ -4,7 +4,12 @@ const institucionSchema= new Schema({
     nombre: String,
     direccion: String,
     celular : String,
-    representante: String
+    representante: String,
+    fecha_inicio: String,
+    fecha_fin: String,
+    correo_institucion: String,
+    archivoPath: String
+
 });
 
 interface iInstitucion extends Document{
@@ -12,6 +17,10 @@ interface iInstitucion extends Document{
     direccion: String,
     celular : String,
     representante: String
+    fecha_inicio: String,
+    fecha_fin: String,
+    correo_institucion: String,
+    archivoPath: string
 }
 
 export default model<iInstitucion>('Institucion', institucionSchema)

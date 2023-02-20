@@ -32,13 +32,15 @@ router.route('/noVinculados')
   .get(getNoVinculados)
 
 router.route('/obtenerConvenios')
+.post(multer.single('file'), crearInstitucion)
   .post(crearInstitucion)
   .get(getInstituciones);
 
 router.route('/convenio/:id')
   .put(updateInstitucion)
   .delete(deleteInstitucion)
-  .get(getInstitucion);
+  .get(getInstitucion)
+  .put(multer.single('file'), crearInstitucion);
 
 router.route('/obtenerDatos')
   .post(multer.single('file'), crearInforme)
