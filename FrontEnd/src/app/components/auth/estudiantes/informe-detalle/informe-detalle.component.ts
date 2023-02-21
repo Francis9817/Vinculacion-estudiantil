@@ -35,7 +35,11 @@ export class InformeDetalleComponent implements OnInit {
     celular: '',
     nombre: '',
     direccion: '',
-    representante: ''
+    representante: '',
+    fecha_inicio: '',
+    fecha_fin: '',
+    correo_institucion: '',
+    archivoPath: ''
   };
 
   informeAcademico: FormGroup;

@@ -33,9 +33,9 @@ export class EmpresaService {
     return this.http.post(`${this.urlApi}/obtenerConvenios`, fd);
   }
 
-  crearEmpresa( newEmpresa: Institucion) {
+/*   crearEmpresa( newEmpresa: Institucion) {
     return this.http.post(`${this.urlApi}/obtenerConvenios`, newEmpresa);
-  }
+  } */
 
   // Intituciones
   getInstituciones() {
@@ -48,6 +48,28 @@ export class EmpresaService {
 
   deleteInstitucion(id: string) {
     return this.http.delete(`${this.urlApi}/convenio/${id}`);
+  }
+
+  updateVinculacion(id: string,
+    representante: string,
+    nombre: string,
+    direccion: string,
+    celular: string,
+    fecha_inicio: string,
+    fecha_fin: string,
+    correo_institucion: string,
+    file: File
+  ){
+    const fd = new FormData();
+    fd.append('representante', representante);
+    fd.append('nombre', nombre);
+    fd.append('direccion', direccion);
+    fd.append('celular', celular);
+    fd.append('fecha_inicio', fecha_inicio);
+    fd.append('fecha_fin', fecha_fin);
+    fd.append('correo_institucion', correo_institucion);
+    fd.append('file', file);
+    return this.http.put(`${this.urlApi}/convenio/${id}`, fd);
   }
 
   updateInstitucion( id: string,  updateEmpresa: Institucion) {

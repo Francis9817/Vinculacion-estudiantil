@@ -37,10 +37,11 @@ router.route('/obtenerConvenios')
   .get(getInstituciones);
 
 router.route('/convenio/:id')
+  .put(multer.single('file'), updateInstitucion)
   .put(updateInstitucion)
   .delete(deleteInstitucion)
-  .get(getInstitucion)
-  .put(multer.single('file'), crearInstitucion);
+  .get(getInstitucion);
+ 
 
 router.route('/obtenerDatos')
   .post(multer.single('file'), crearInforme)

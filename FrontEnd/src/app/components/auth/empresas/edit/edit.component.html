@@ -97,7 +97,7 @@
                                 </h5>
 
                                 <form class="needs-validation" novalidate [formGroup]="convenios" *ngIf="institucion"
-                                    (ngSubmit)="update(representante.value, empresa.value, direccion.value, celular.value )">
+                                    (ngSubmit)="update(representante, empresa, direccion, celular, fecha_inicio, fecha_fin, correo_institucion)">
                                     <div class="form-row">
                                         <div class="col-lg-3 col-md-1 col-sm-1"></div>
                                         <div class="col-lg-6 col-md-10 col-12 col-sm-10 mb-3">
@@ -160,6 +160,72 @@
                                             </div>
                                             <div class="invalid-tooltip">
                                                 Ingrese el celular
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-1 col-sm-1"></div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-lg-3 col-md-1 col-sm-1"></div>
+                                        <div class="col-lg-6 col-md-10 col-12 col-sm-10 mb-3">
+                                            <label for="email">correo de la institucion</label>
+                                            <input type="email" class="form-control" [(ngModel)]="institucion.correo_institucion"
+                                                formControlName="correo_institucion" required #correo_institucion>
+                                            <div class="valid-tooltip">
+                                                Genial!
+                                            </div>
+                                            <div class="invalid-tooltip">
+                                                Ingrese el correo_institucion
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-1 col-sm-1"></div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-lg-3 col-md-1 col-sm-1"></div>
+                                        <div class="col-lg-6 col-md-10 col-12 col-sm-10 mb-3">
+                                            <label for="fecha_inicio">fecha_inicio:</label>
+                                            <input type="date" class="form-control" [(ngModel)]="institucion.fecha_inicio"
+                                                formControlName="fecha_inicio" required #fecha_inicio>
+                                            <div class="valid-tooltip">
+                                                Genial!
+                                            </div>
+                                            <div class="invalid-tooltip">
+                                                Ingrese el fecha_inicio
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-1 col-sm-1"></div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-lg-3 col-md-1 col-sm-1"></div>
+                                        <div class="col-lg-6 col-md-10 col-12 col-sm-10 mb-3">
+                                            <label for="fecha_fin">fecha_fin:</label>
+                                            <input type="date" class="form-control"  [(ngModel)]="institucion.fecha_fin"
+                                                formControlName="fecha_fin" required #fecha_fin>
+                                            <div class="valid-tooltip">
+                                                Genial!
+                                            </div>
+                                            <div class="invalid-tooltip">
+                                                Ingrese el fecha_fin
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-1 col-sm-1"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-1 col-sm-1"></div>
+                                        <div class="container-fluid col-lg-6 col-md-10 col-sm-10 col-12">
+                                            <label for="archivo">documento de convenio:</label>
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input form-control"
+                                                    formControlName="archivoPath" id="customFile"
+                                                    aria-describedby="customFile" name="filename" onchange="cambiar()"
+                                                    (change)="archivoSubir($event)" required>
+                                                <label class="custom-file-label" for="customFile"
+                                                    id="seleccionar">Seleccionar</label>
+                                                <div class="valid-tooltip">
+                                                    Genial!
+                                                </div>
+                                                <div class="invalid-tooltip">
+                                                    Suba el Archivo de Convenio
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-1 col-sm-1"></div>

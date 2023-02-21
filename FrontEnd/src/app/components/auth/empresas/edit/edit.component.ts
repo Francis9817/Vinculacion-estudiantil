@@ -18,6 +18,9 @@ export class EditComponent implements OnInit {
   convenios: FormGroup;
   institucion: Institucion;
   id: string;
+  file: File;
+  fileSelected: string | ArrayBuffer;
+
 
   constructor(private empresa: FormBuilder, private empresaService: EmpresaService,
               private activeRouter: ActivatedRoute, private router: Router) {
@@ -25,7 +28,11 @@ export class EditComponent implements OnInit {
       representante: new FormControl('', [Validators.required, Validators.minLength(5)]),
       empresa: new FormControl('', [Validators.required]),
       direccion: new FormControl('', [Validators.required]),
-      celular: new FormControl('', [Validators.required])
+      celular: new FormControl('', [Validators.required]),
+      fecha_inicio: new FormControl('', [Validators.required]),
+      fecha_fin: new FormControl('', [Validators.required]),
+      correo_institucion: new FormControl('', [Validators.required]),
+      archivoPath: new FormControl('', [Validators.required]),
     });
   }
 
@@ -42,12 +49,21 @@ export class EditComponent implements OnInit {
     });
   }
 
-  update(representante: string, nombre: string, direccion: string, celular: string) {
+  archivoSubir(event) {
+    if (event.target.files && event.target.files[0]) {
+      // tslint:disable-next-line:no-angle-bracket-type-assertion
+      this.file = <File> event.target.files[0];
+    }
+  }
+
+  update(representante: HTMLInputElement,nombre: HTMLInputElement, 
+    direccion:HTMLInputElement, celular:HTMLInputElement, fecha_inicio:HTMLInputElement,
+    fecha_fin:HTMLInputElement, correo_institucion:HTMLInputElement) {
     this.blockUI.start('Enviado Empresa');
     setTimeout(() => {
       this.blockUI.stop();
     }, 1000);
-    this.empresaService.updateInstitucion(this.id, { representante, nombre, direccion, celular } as Institucion)
+    this.empresaService.updateVinculacion(this.id,  representante.value, nombre.value,  direccion.value, celular.value, fecha_inicio.value, fecha_fin.value, correo_institucion.value, this.file)
       .subscribe( res => {
         alertify.success('Empresa Actualizada Correctamente');
         this.convenios.reset();
