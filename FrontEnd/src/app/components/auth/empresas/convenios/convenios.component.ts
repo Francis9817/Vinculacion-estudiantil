@@ -29,9 +29,9 @@ export class ConveniosComponent implements OnInit {
       representante: new FormControl('', [Validators.required, Validators.minLength(5)]),
       empresa: new FormControl('', [Validators.required]),
       direccion: new FormControl('', [Validators.required]),
-      celular: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
-      fecha_inicio: new FormControl('', [Validators.required, Validators.pattern('/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/')]),
-      fecha_fin: new FormControl('', [Validators.required, Validators.pattern('/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/')]),
+      celular: new FormControl('', [Validators.required]),
+      fecha_inicio: new FormControl('', [Validators.required]),
+      fecha_fin: new FormControl('', [Validators.required]),
       correo_institucion: new FormControl('', [Validators.required]),
       archivoPath: new FormControl('', [Validators.required]),
 
