@@ -149,7 +149,7 @@
                                         <div class="col-lg-3 col-md-1 col-sm-1"></div>
                                         <div class="col-lg-6 col-md-10 col-12 col-sm-10 mb-3">
                                             <label for="celular">Celular:</label>
-                                            <input type="number" class="form-control" placeholder="0987654321"
+                                            <input type="number" min="0111111111" max="999999999" class="form-control" placeholder="0987654321"
                                                 formControlName="celular" required #celular>
                                             <div class="valid-tooltip">
                                                 Genial!
@@ -179,7 +179,7 @@
                                         <div class="col-lg-3 col-md-1 col-sm-1"></div>
                                         <div class="col-lg-6 col-md-10 col-12 col-sm-10 mb-3">
                                             <label for="fecha_inicio">fecha_inicio:</label>
-                                            <input type="date" class="form-control" placeholder="0987654321"
+                                            <input type="date" id="fingreso"  [(ngModel)]="fingreso" (ngModelChange)="cambioFecha()" class="form-control"
                                                 formControlName="fecha_inicio" required #fecha_inicio>
                                             <div class="valid-tooltip">
                                                 Genial!
@@ -194,7 +194,7 @@
                                         <div class="col-lg-3 col-md-1 col-sm-1"></div>
                                         <div class="col-lg-6 col-md-10 col-12 col-sm-10 mb-3">
                                             <label for="fecha_fin">fecha_fin:</label>
-                                            <input type="date" class="form-control" placeholder="0987654321"
+                                            <input type="date" id="fegreso" [min]="deshabilitar" class="form-control"
                                                 formControlName="fecha_fin" required #fecha_fin>
                                             <div class="valid-tooltip">
                                                 Genial!
