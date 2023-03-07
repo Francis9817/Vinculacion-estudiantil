@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { EmpresaService } from 'src/app/service/empresa.service';
 import { Institucion } from 'src/app/models/instituciones';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 declare let alertify: any;
 
 
@@ -20,6 +21,9 @@ export class EditComponent implements OnInit {
   id: string;
   file: File;
   fileSelected: string | ArrayBuffer;
+  ahora: any;
+  deshabilitar: any;
+  fingreso: string;
 
 
   constructor(private empresa: FormBuilder, private empresaService: EmpresaService,
@@ -47,7 +51,14 @@ export class EditComponent implements OnInit {
           console.log(err);
         });
     });
+    const datePite = new DatePipe('en-Us')
+    this.ahora = datePite.transform(new Date(), 'yyyy-MM-dd')
+
   }
+
+  cambioFecha() {
+		this.deshabilitar = this.fingreso
+	}
 
   archivoSubir(event) {
     if (event.target.files && event.target.files[0]) {
