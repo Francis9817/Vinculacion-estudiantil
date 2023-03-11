@@ -68,7 +68,7 @@ export class InformeDetalleComponent implements OnInit {
         tipo_informe:new FormControl('', [Validators.required]),
 
         archivoPath: new FormControl('', [Validators.required]),
-        horas: new FormControl('', [Validators.required]),
+        progresos: new FormControl('', [Validators.required]),
       });
     }
 
@@ -108,7 +108,7 @@ export class InformeDetalleComponent implements OnInit {
   calcularProgreso() {
     let total = 0;
     this.informesAprobados.forEach(element => {
-      total += element.horas;
+      total += element.progresos;
     });
     return this.total = total;
   }
@@ -129,7 +129,7 @@ export class InformeDetalleComponent implements OnInit {
 
   mensaje(): void {
     alertify
-      .alert('Total de horas completadas', () => {
+      .alert('Total de progresos completadas', () => {
       alertify.success('OK');
       });
   }
@@ -160,14 +160,14 @@ export class InformeDetalleComponent implements OnInit {
   }
 
   update( nombreProyecto: HTMLInputElement,
-          tutorAcademico: HTMLSelectElement, horas: HTMLInputElement, tipo_informe:HTMLInputElement) {
+          tutorAcademico: HTMLSelectElement, progresos: HTMLInputElement, tipo_informe:HTMLInputElement) {
     this.blockUI.start('Actualizando Informe');
     const estadoAprobacion = 0;
     const tutor = this.seleccionarTutor(tutorAcademico);
     setTimeout(()  => {
       this.informeService
       .updateInforme( this.id, nombreProyecto.value, this.convenio._id, tutor, this.hoy,
-                      estadoAprobacion, horas.value, this.file, this.estudiante.id, tipo_informe.value)
+                      estadoAprobacion, progresos.value, this.file, this.estudiante.id, tipo_informe.value)
       .subscribe(
         res => {
           alertify.set('notifier', 'position', 'top-right');

@@ -5,7 +5,7 @@ export interface Informe {
     tutorAcademico: string;
     fecha: string;
     estadoAprobacion: number;
-    horas: number;
+    progresos: number;
     archivoPath: string;
     idConvenio: string;
     idEstudiante: string;

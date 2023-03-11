@@ -78,4 +78,22 @@ export class InformesComponent implements OnInit {
       });
   }
 
+  noAprobar(id: string): void {
+    const estadoAprobacion = 0;
+    this.informeService.updateEstado(id, { estadoAprobacion } as Informe)
+      .subscribe( res => {
+        alertify.warning('Informe por Aprobar Correctamente');
+        this.informeService.getInformes(this.idEstudiante)
+          // tslint:disable-next-line:no-shadowed-variable
+          .subscribe( res => {
+            this.informeEstudiante = res;
+            this.colocarAprobados();
+          }, err => {
+            console.log(err);
+          });
+      }, err => {
+        alertify.error('Error al aprobar el informe');
+      });
+  }
+
 }

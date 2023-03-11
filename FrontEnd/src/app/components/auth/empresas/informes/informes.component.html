@@ -47,7 +47,8 @@
                                         (click)="aprobar(informe._id)">
                                         <i class="fa fa-check"></i> Sin Aprobar
                                     </button>
-                                    <button *ngIf="informe.estadoAprobacion == 1" class="btn btn-outline-success right">
+                                    <button *ngIf="informe.estadoAprobacion == 1" class="btn btn-outline-success right"
+                                    (click)="noAprobar(informe._id)">
                                         <i class="fa fa-check"></i> Aprobado
                                     </button>
                                 </td>

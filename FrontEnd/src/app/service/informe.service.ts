@@ -18,7 +18,7 @@ export class InformeService {
     tutorAcademico: string,
     fecha: string,
     estadoAprobacion: number,
-    horas: string, file: File,
+    progresos: string, file: File,
     idEstudiante: string,
     tipo_informe: string) {
     const fd = new FormData();
@@ -27,7 +27,7 @@ export class InformeService {
     fd.append('idTutorAcademico', tutorAcademico);
     fd.append('fecha', fecha);
     fd.append('estadoAprobacion', estadoAprobacion.toString());
-    fd.append('horas', horas);
+    fd.append('progresos', progresos);
     fd.append('file', file);
     fd.append('idEstudiante', idEstudiante);
     fd.append('tipo_informe', tipo_informe);
@@ -55,7 +55,7 @@ export class InformeService {
   }
 
   updateInforme(id: string, nombreProyecto: string, convenio: string, tutorAcademico: string, fecha: string,
-    estadoAprobacion: number, horas: string, file: File, idEstudiante: string, tipo_informe: string) {
+    estadoAprobacion: number, progresos: string, file: File, idEstudiante: string, tipo_informe: string) {
     const fd = new FormData();
     fd.append('nombreProyecto', nombreProyecto);
     fd.append('idConvenio', convenio);
@@ -63,7 +63,7 @@ export class InformeService {
     fd.append('fecha', fecha);
     fd.append('tipo_informe', tipo_informe);
     fd.append('estadoAprobacion', estadoAprobacion.toString());
-    fd.append('horas', horas);
+    fd.append('progresos', progresos);
     fd.append('file', file);
     fd.append('idEstudiante', idEstudiante);
     return this.http.put(`${this.urlApiOne}/${id}`, fd);

@@ -5,7 +5,7 @@ const informeSchema= new Schema({
     fecha: String,
     tipo_informe:String,
     estadoAprobacion : Number,
-    horas: Number,
+    progresos: Number,
     archivoPath: String,
     idTutorAcademico: String,
     idConvenio: String,
@@ -17,7 +17,7 @@ interface iInforme extends Document{
     fecha: string;
     tipo_informe: string;
     estadoAprobacion : number;
-    horas: number;
+    progresos: number;
     archivoPath: string;
     idTutorAcademico: String;
     idConvenio: String;

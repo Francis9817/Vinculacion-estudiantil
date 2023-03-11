@@ -28,7 +28,7 @@
                                 </div>
 
                                 <form class="needs-validation" novalidate [formGroup]="informeAcademico"
-                                    (ngSubmit)="enviar(nombreProyecto, tutorAcademico, horas, tipo_informe)">
+                                    (ngSubmit)="enviar(nombreProyecto, tutorAcademico, progresos, tipo_informe)">
                                     <div class="form-row">
                                         <div class="col-lg-3 col-md-1 col-sm-1"></div>
                                         <div class="col-lg-3 col-md-5 mb-3 col-sm-5 col-12">
@@ -148,8 +148,8 @@
                                         </div>
                                         <div class="col-lg-3 col-md-5 col-12 col-sm-5 mb-3">
                                           
-                                            <input type="number" style="visibility:hidden" class="form-control" formControlName="horas"
-                                                minlength="3" [(ngModel)]="hora1" disabled  required #horas>
+                                            <input type="number" style="visibility:hidden" class="form-control" formControlName="progresos"
+                                                minlength="3" [(ngModel)]="hora1" disabled  required #progresos>
                                         </div>
                                         <div class="col-lg-3 col-md-1 col-sm-1"></div>
                                     </div>

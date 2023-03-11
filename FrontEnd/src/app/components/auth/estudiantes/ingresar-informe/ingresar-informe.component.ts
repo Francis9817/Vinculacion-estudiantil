@@ -62,7 +62,7 @@ export class IngresarInformeComponent implements OnInit {
       tutorAcademico: new FormControl('', [Validators.required]),
       tipo_informe:new FormControl('', [Validators.required]),
       archivoPath: new FormControl('', [Validators.required]),
-      horas: new FormControl('', [Validators.required]),
+      progresos: new FormControl('', [Validators.required]),
     });
   }
 
@@ -91,14 +91,14 @@ export class IngresarInformeComponent implements OnInit {
   calcularProgreso() {
     let total = 0;
     this.informesAprobados.forEach(element => {
-      total += element.horas;
+      total += element.progresos;
     });
     return this.total = total;
   }
 
   mensaje(): void {
     alertify
-      .alert('Total de horas completadas', () => {
+      .alert('Total de progresos completadas', () => {
       alertify.success('OK');
       });
   }
@@ -136,7 +136,7 @@ export class IngresarInformeComponent implements OnInit {
 
 
   enviar(nombreProyecto: HTMLInputElement, tutorAcademico: HTMLSelectElement,
-         horas: HTMLInputElement, tipo_informe:HTMLInputElement) {
+         progresos: HTMLInputElement, tipo_informe:HTMLInputElement) {
     this.blockUI.start('Enviado Informe');
     setTimeout(() => {
       this.blockUI.stop();
@@ -146,7 +146,7 @@ export class IngresarInformeComponent implements OnInit {
    
 
     this.informeService
-      .crearInforme(nombreProyecto.value, this.convenio._id, tutor, this.hoy, estadoAprobacion, horas.value, this.file, this.estudiante.id, tipo_informe.value)
+      .crearInforme(nombreProyecto.value, this.convenio._id, tutor, this.hoy, estadoAprobacion, progresos.value, this.file, this.estudiante.id, tipo_informe.value)
       .subscribe(
         res => {
           alertify.set('notifier', 'position', 'top-right');

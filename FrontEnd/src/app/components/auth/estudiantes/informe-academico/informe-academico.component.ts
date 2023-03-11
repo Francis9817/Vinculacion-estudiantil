@@ -86,7 +86,7 @@ export class InformeAcademicoComponent implements OnInit {
   calcularProgreso() {
     let total = 0;
     this.informesAprobados.forEach(element => {
-      total += element.horas;
+      total += element.progresos;
     });
     const ctx = document.getElementById('myChart');
     const chart = new Chart(ctx, {

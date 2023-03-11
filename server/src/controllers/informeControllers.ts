@@ -18,14 +18,14 @@ export async function getInforme(req: Request, res: Response): Promise<Response>
 
 export async function crearInforme(req: Request, res: Response): Promise<Response> {
     const {
-        nombreProyecto, idConvenio, idTutorAcademico, fecha, idEstudiante, estadoAprobacion, horas, tipo_informe
+        nombreProyecto, idConvenio, idTutorAcademico, fecha, idEstudiante, estadoAprobacion, progresos, tipo_informe
     } = req.body;
     const newInforme = {
         nombreProyecto,
         fecha,
         tipo_informe,
         estadoAprobacion,
-        horas,
+        progresos,
         total: 0,
         archivoPath: req.file.path,
         idConvenio,
@@ -43,7 +43,7 @@ export async function crearInforme(req: Request, res: Response): Promise<Respons
 
 export async function updateInforme(req: Request, res: Response): Promise<Response> {
     const {
-        nombreProyecto, idConvenio, idTutorAcademico, fecha, idEstudiante, estadoAprobacion, horas, tipo_informe
+        nombreProyecto, idConvenio, idTutorAcademico, fecha, idEstudiante, estadoAprobacion, progresos, tipo_informe
     } = req.body;
     const informe = await Informe.findById(req.params.id);
     if (informe) {
@@ -57,7 +57,7 @@ export async function updateInforme(req: Request, res: Response): Promise<Respon
         fecha,
         idEstudiante,
         estadoAprobacion,
-        horas,
+        progresos,
         archivoPath: req.file.path
     }, { new: true });
     const vinculacion = await Informe.find();
@@ -105,7 +105,7 @@ export async function getContarAprobados(req: Request, res: Response): Promise<R
                 $group:
                 {
                     _id: "$idEstudiante",
-                    total: { $sum: { $multiply: ["$horas"] } },
+                    total: { $sum: { $multiply: ["$progresos"] } },
                 }
             }
         ]
